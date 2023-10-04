@@ -1,18 +1,36 @@
+
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <h1>girlypop counter</h1>
+    <p>girlies: {{ counter }}</p>
+    <button @click="increment">increase</button>
+    <button @click="decrement">decrease</button>
+    <button @click="double">double</button>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  computed: {
+    counter() {
+      return this.$store.state.counter;
+    },
+  },
+  methods: {
+    increment() {
+      this.$store.commit('increment');
+    },
+    decrement() {
+      this.$store.commit('decrement');
+    },
+    double() {
+      this.$store.commit('double');
+    },
+  },
+};
 </script>
+
+
 
 <style>
 #app {
@@ -20,7 +38,11 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #f5a1a1;
   margin-top: 60px;
+}
+
+#app button {
+  color: #df4d4d;
 }
 </style>
